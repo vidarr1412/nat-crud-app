@@ -1,14 +1,14 @@
-/* Container styles */
+
 .container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
+    width: 900px;
     margin: 200px auto 20px auto;
   }
   
-  /* Form styles */
+  
   .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -16,7 +16,7 @@
     align-items: center;
   }
   
-  /* Input styles */
+  
   .input {
     padding: 10px;
     border: 1px solid #ddd;
@@ -24,7 +24,7 @@
     font-size: 16px;
   }
   
-  /* Button styles */
+  
   .button {
     padding: 10px 20px;
     border: none;
@@ -35,20 +35,19 @@
     transition: background-color 0.3s, color 0.3s;
   }
   
-  /* Submit button styles */
+  
   .submit-button {
     background-color: #00215E;
     color: #fff;
   }
   
-  /* Upload button styles */
   .upload-button {
     background-color: #28a745;
     color: #fff;
-    grid-column: span 2; /* Make the upload button span two columns */
+    grid-column: span 2;
+   
   }
   
-  /* Heading styles */
   h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -58,10 +57,10 @@
     grid-column: span 2;
     text-align: center;
   }
+
   
-  /* File input styles */
   input[type="file"] {
-    grid-column: span 2; /* Make the file input span two columns */
+    grid-column: span 2; 
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;

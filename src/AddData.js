@@ -7,7 +7,7 @@ const containerStyles = {
   padding: '20px',
   borderRadius: '8px',
   boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  maxWidth: '700px',
+  width: '520px',
   margin: '200px auto 20px auto',
 };
 
@@ -16,12 +16,15 @@ const formStyles = {
   gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '15px',
   alignItems: 'center',
+ 
 };
 
 const inputStyles = {
   padding: '10px',
   border: '1px solid #ddd',
   borderRadius: '5px',
+  marginRight:'120px',
+  position:'relative',
   fontSize: '16px',
 };
 
@@ -39,13 +42,17 @@ const submitButtonStyles = {
   ...buttonStyles,
   backgroundColor: '#00215E',
   color: '#fff',
+  
 };
 
 const uploadButtonStyles = {
   ...buttonStyles,
   backgroundColor: '#28a745',
   color: '#fff',
-  gridColumn: 'span 2', // Make the upload button span two columns
+  gridColumn: 'span 2', 
+  width: '250px',
+  marginLeft:'150px',
+
 };
 
 const AddResData = () => {
@@ -66,16 +73,16 @@ const AddResData = () => {
   const [csvFile, setCsvFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Handle CSV file selection
+  
   const handleFileChange = (e) => {
     setCsvFile(e.target.files[0]);
   };
 
-  // Handle form submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "NAT_RESULT"), {
+      await addDoc(collection(db, "NAT"), {
         ...formData,
         age: Number(formData.age),
         academic_performance: Number(formData.academic_performance),
@@ -100,7 +107,7 @@ const AddResData = () => {
     }
   };
 
-  // Handle CSV upload
+  
   const handleFileUpload = async () => {
     if (!csvFile) {
       alert("Please select a CSV file to upload.");
@@ -136,7 +143,7 @@ const AddResData = () => {
 
       try {
         for (let data of batchData) {
-          await addDoc(collection(db, "NAT_RESULT"), data);
+          await addDoc(collection(db, "NAT"), data);
         }
         alert('CSV data uploaded successfully!');
       } catch (error) {
@@ -156,7 +163,10 @@ const AddResData = () => {
       <h2>Add NAT Data</h2>
       <form onSubmit={handleSubmit} style={formStyles}>
         <input
+   
+
           type="text"
+
           placeholder="Respondents Name"
           value={formData.Respondents}
           onChange={(e) => setFormData({ ...formData, Respondents: e.target.value })}
@@ -165,11 +175,11 @@ const AddResData = () => {
         />
         <input
           type="number"
-          placeholder="Respondents Age"
+          placeholder="Age"
           value={formData.age}
           onChange={(e) => setFormData({ ...formData, age: e.target.value })}
           required
-          style={{ ...inputStyles, width: '100px' }} // Small input for age
+          style={{ ...inputStyles, width: '100px',marginLeft:'40px' }} 
         />
         <input
           type="text"
@@ -177,7 +187,7 @@ const AddResData = () => {
           value={formData.sex}
           onChange={(e) => setFormData({ ...formData, sex: e.target.value })}
           required
-          style={{ ...inputStyles, width: '150px' }} // Medium input for sex
+          style={{ ...inputStyles, width: '150px' }} 
         />
         <input
           type="text"
@@ -185,23 +195,24 @@ const AddResData = () => {
           value={formData.Ethnic}
           onChange={(e) => setFormData({ ...formData, Ethnic: e.target.value })}
           required
-          style={inputStyles}
+          style={{inputStyles,width:'290px',marginLeft:'-150px'}}
         />
         <input
           type="number"
           placeholder="Academic Performance"
-          value={formData.academic_performance}
-          onChange={(e) => setFormData({ ...formData, academic_performance: e.target.value })}
+          value={formData.academic_perfromance}
+          onChange={(e) => setFormData({ ...formData, academic_perfromance: e.target.value })}
           required
-          style={{ ...inputStyles, width: '100px' }} // Small input for performance
+          style={{ ...inputStyles, width: '200px' }} 
         />
+        
         <input
           type="text"
           placeholder="Academic Description"
-          value={formData.academic_description}
-          onChange={(e) => setFormData({ ...formData, academic_description: e.target.value })}
+          value={formData.adamemic_description}
+          onChange={(e) => setFormData({ ...formData, adamemic_description: e.target.value })}
           required
-          style={inputStyles}
+          style={{inputStyles,width:'240px',marginLeft:'-100px'}}
         />
         <input
           type="text"
@@ -209,7 +220,7 @@ const AddResData = () => {
           value={formData.IQ}
           onChange={(e) => setFormData({ ...formData, IQ: e.target.value })}
           required
-          style={{ ...inputStyles, width: '100px' }} // Small input for IQ
+          style={{ ...inputStyles, width: '100px' }} 
         />
         <input
           type="text"
@@ -217,7 +228,7 @@ const AddResData = () => {
           value={formData.type_school}
           onChange={(e) => setFormData({ ...formData, type_school: e.target.value })}
           required
-          style={inputStyles}
+          style={{inputStyles,width:'340px',marginLeft:'-200px'}}
         />
         <input
           type="text"
@@ -225,7 +236,7 @@ const AddResData = () => {
           value={formData.socio_economic_status}
           onChange={(e) => setFormData({ ...formData, socio_economic_status: e.target.value })}
           required
-          style={inputStyles}
+          style={{inputStyles,width:'240px'}}
         />
         <input
           type="text"
@@ -233,7 +244,7 @@ const AddResData = () => {
           value={formData.Study_Habit}
           onChange={(e) => setFormData({ ...formData, Study_Habit: e.target.value })}
           required
-          style={inputStyles}
+          style={{inputStyles,width:'200px',marginLeft:'-60px'}}
         />
         <input
           type="number"
@@ -241,13 +252,13 @@ const AddResData = () => {
           value={formData.NAT_Results}
           onChange={(e) => setFormData({ ...formData, NAT_Results: e.target.value })}
           required
-          style={{ ...inputStyles, width: '100px' }} // Small input for results
+          style={{ ...inputStyles, width: '150px' }} 
         />
-        <button type="submit" style={submitButtonStyles}>
+        <button type="submit" style={{submitButtonStyles,marginLeft:'-140px',width:'300px'}}>
           Add Data
         </button>
-        <h3 style={{ gridColumn: 'span 2', textAlign: 'center' }}>OR</h3>
-        <input type="file" accept=".csv" onChange={handleFileChange} style={{ gridColumn: 'span 2' }} />
+        <h3 style={{ gridColumn: 'span 2', textAlign: 'center' ,marginLeft:'-100px'}}>OR</h3>
+        <input type="file" accept=".csv" onChange={handleFileChange} style={{ gridColumn: 'span 2',width:'250px',marginLeft:'140px'}} />
         <button onClick={handleFileUpload} disabled={loading} style={uploadButtonStyles}>
           {loading ? 'Uploading...' : 'Upload CSV'}
         </button>

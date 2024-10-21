@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import AddResData from './AddData';
 import Home from './Home';
 import Nav from './Nav';
-import ViewRecords from './ViewRecords'; // Import ViewRecords component
+import ViewRecords from './ViewRecords';
 
 const appStyles = {
   backgroundColor: '#f8f9fa', 

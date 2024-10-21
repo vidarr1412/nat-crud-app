@@ -1,0 +1,55 @@
+/* ViewRecords.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1; /* Light background for better contrast */
+    margin: 0;
+  }
+  
+  h2 {
+    color: #333; /* Dark text for headings */
+  }
+  
+  table {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures rounded corners on table */
+  }
+  
+  th {
+    background-color: #007bff; /* Primary color for header */
+    color: #fff; /* White text on header */
+    padding: 15px;
+  }
+  
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #ffffff; /* White background for cells */
+    transition: background-color 0.3s;
+  }
+  
+  tbody tr {
+    transition: background-color 0.3s;
+  }
+  
+  tbody tr:hover {
+    background-color: #e9ecef; /* Light gray on hover */
+  }
+  
+  @media (max-width: 600px) {
+    th, td {
+      font-size: 14px; /* Smaller font size for mobile */
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  }
+  
+  /* Loading and no records message */
+  .loading,
+  .no-records {
+    color: #007bff;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  

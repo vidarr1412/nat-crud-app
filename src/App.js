@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import AddResData from './AddData';
+import Home from './Home';
+import Nav from './Nav';
+import ViewRecords from './ViewRecords'; // Import ViewRecords component
 
-function App() {
+const appStyles = {
+  backgroundColor: '#f8f9fa', 
+  minHeight: '100vh', 
+  padding: '20px', 
+  fontFamily: 'Arial, sans-serif',   
+};
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={appStyles}>
+      <Nav setActiveTab={setActiveTab} />
+
+      {activeTab === "home" && <Home />}
+      {activeTab === "addRecord" && <AddResData />}
+      {activeTab === "viewRecords" && <ViewRecords />} {/* Add ViewRecords tab */}
+
     </div>
   );
-}
+};
 
 export default App;

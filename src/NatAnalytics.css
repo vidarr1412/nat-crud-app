@@ -20,14 +20,42 @@
   /* Chart Container */
   .chart-container {
     width: 80%;
-    max-width: 800px;
-    margin-top: 30px;
+    
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-  }
+    
   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Two equal-width columns */
+    grid-template-rows: 1fr 1fr;    /* Two equal-height rows */
+    gap: 20px;   
+  }
+  .item_1{
+    /* Scatter*/
+  width: 80%;
+  margin-left: 20px;
+  position: relative;
+  }
+  .item_2{
+    /* Span Chart*/
+    width: 80%;
+    margin-left: 20px;
+    position: relative;
+  }
+  .item_3{
+    /* Radar Chart*/
+    width: 80%;
+    margin-left: 20px;
+    position: relative;
+  }
+  .item_4{
+    /* Parallel Coordinate Plot*/
+    width: 80%;
+    margin-left: 20px;
+    position: relative;
+  }
   /* Loader Styling */
   .loader {
     font-size: 18px;

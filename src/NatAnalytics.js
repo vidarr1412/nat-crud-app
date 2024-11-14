@@ -138,15 +138,25 @@ const NatAnalytics = () => {
 
   return (
     <div className="nat-analytics-container">
-      <h2 className="page-title">Scatter Plot of Academic Performance</h2>
+      <h2 className="page-title">Dashboard</h2>
    
 
       {loading ? (
         <div className="loader">Loading...</div>  // Simple loader while data is fetching
       ) : (
+        
         <div className="chart-container">
-          <Scatter data={recordList} />
+           
+         <div className="item_1"> <Scatter   data={recordList} />
+         </div>
+        
+         <div className="item_2"> <Scatter   data={recordList} />
+         </div>
+         <div className="item_3"> <Scatter data={recordList} /></div>
+         <div className="item_4"> <Scatter data={recordList} /></div>
         </div>
+        
+        
       )}
     </div>
   );

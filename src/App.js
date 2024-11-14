@@ -1,11 +1,11 @@
-
+import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react";
 import AddResData from './AddData';
 import Home from './Home';
 import Nav from './Nav';
 import ViewRecords from './ViewRecords';
-import NatAnalytics from './NatAnalytics';
+
 const appStyles = {
   backgroundColor: '#f8f9fa', 
   minHeight: '100vh', 
@@ -22,8 +22,8 @@ const App = () => {
 
       {activeTab === "home" && <Home />}
       {activeTab === "addRecord" && <AddResData />}
-      {activeTab === "viewRecords" && <ViewRecords />}
-    {activeTab === "viewAnalytics" && <NatAnalytics/>} 
+      {activeTab === "viewRecords" && <ViewRecords />} {/* Add ViewRecords tab */}
+
     </div>
   );
 };

@@ -1,0 +1,38 @@
+/* Container Styling */
+.nat-analytics-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+  }
+  
+  /* Page Title */
+  .page-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Chart Container */
+  .chart-container {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Loader Styling */
+  .loader {
+    font-size: 18px;
+    font-weight: 600;
+    color: #007BFF;
+    margin-top: 50px;
+  }
+  

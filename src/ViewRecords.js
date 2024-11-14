@@ -237,6 +237,7 @@ const buttonStyles = {
 const deleteButtonStyles = {
   ...buttonStyles,
   backgroundColor: '#dc3545',
+  marginTop:'20px',
 };
 
 export default ViewRecords;

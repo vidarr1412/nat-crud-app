@@ -2,41 +2,36 @@ import React, { useState } from 'react';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
-const containerStyles = {
-  backgroundColor: '#ffffff',
-  padding: '20px',
-  borderRadius: '8px',
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  width: '520px',
-  margin: '200px auto 20px auto',
-};
 
-const formStyles = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '15px',
-  alignItems: 'center',
- 
-};
 
-const inputStyles = {
-  padding: '10px',
-  border: '1px solid #ddd',
-  borderRadius: '5px',
-  marginRight:'120px',
-  position:'relative',
-  fontSize: '16px',
-};
+const containerbehind={
+
+}
 
 const buttonStyles = {
   padding: '10px 20px',
+  marginTop:'40px',
+  width:'200px',
+  margin:'auto',
+  borderRadius: '4px',
   border: 'none',
-  borderRadius: '5px',
+  backgroundColor: 'green',
+  color: '#fff',
   cursor: 'pointer',
-  fontSize: '16px',
-  fontWeight: 'bold',
-  transition: 'background-color 0.3s, color 0.3s',
+   zindex:'1'
 };
+const fileInputStyles = {
+  marginTop: '150px',
+  padding: '10px',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  margin:'auto',
+  width:'250px',
+ 
+  
+};
+
+
 
 const submitButtonStyles = {
   ...buttonStyles,
@@ -50,19 +45,44 @@ const uploadButtonStyles = {
   backgroundColor: '#28a745',
   color: '#fff',
   gridColumn: 'span 2', 
-  width: '250px',
+  width: '150px',
   marginLeft:'150px',
 
 };
-
+const containerStyles = {
+  padding: '20px',
+  maxWidth: '800px',
+  border:'solid',
+  borderRadius:'10px',
+  paddingBottom:'40px',
+  margin: '0 auto',
+  fontFamily: 'Arial, sans-serif',
+  zindex:'1'
+};
+const formStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '15px',
+};
+const rowStyles = {
+  display: 'flex',
+  gap: '15px',
+  alignItems: 'center',
+};
+const inputStyles = {
+  padding: '8px',
+  borderRadius: '4px',
+  border: '1px solid #ccc',
+  flex: 1,
+};
 const AddResData = () => {
   const [formData, setFormData] = useState({
     Respondents: "",
     age: "",
     sex: "",
     Ethnic: "",
-    academic_performance: "",
-    academic_description: "",
+    academic_perfromance: "",
+    adamemic_description: "",
     IQ: "",
     type_school: "",
     socio_economic_status: "",
@@ -85,7 +105,7 @@ const AddResData = () => {
       await addDoc(collection(db, "NAT"), {
         ...formData,
         age: Number(formData.age),
-        academic_performance: Number(formData.academic_performance),
+        academic_perfromance: Number(formData.academic_perfromance),
         NAT_Results: Number(formData.NAT_Results),
       });
       alert("Data added successfully!");
@@ -94,8 +114,8 @@ const AddResData = () => {
         age: "",
         sex: "",
         Ethnic: "",
-        academic_performance: "",
-        academic_description: "",
+        academic_perfromance: "",
+        adamemic_description: "",
         IQ: "",
         type_school: "",
         socio_economic_status: "",
@@ -124,14 +144,14 @@ const AddResData = () => {
 
       rows.forEach((row) => {
         const columns = row.split(',');
-        if (columns.length >= 5) {
+        if (columns.length >= 10) {
           batchData.push({
             Respondents: columns[0].trim(),
             age: Number(columns[1].trim()),
             sex: columns[2].trim(),
             Ethnic: columns[3].trim(),
-            academic_performance: Number(columns[4].trim()),
-            academic_description: columns[5].trim(),
+            academic_perfromance: Number(columns[4].trim()),
+            adamemic_description: columns[5].trim(),
             IQ: columns[6].trim(),
             type_school: columns[7].trim(),
             socio_economic_status: columns[8].trim(),
@@ -162,104 +182,127 @@ const AddResData = () => {
     <div style={containerStyles}>
       <h2>Add NAT Data</h2>
       <form onSubmit={handleSubmit} style={formStyles}>
+        <div style={rowStyles}>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={formData.FirstName}
+            onChange={(e) => setFormData({ ...formData, FirstName: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="text"
+            placeholder="Respondents Name"
+            value={formData.Respondents}
+            onChange={(e) => setFormData({ ...formData, Respondents: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <div style={rowStyles}>
+          <input
+            type="number"
+            placeholder="Age"
+            value={formData.age}
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="text"
+            placeholder="Sex"
+            value={formData.sex}
+            onChange={(e) => setFormData({ ...formData, sex: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <div style={rowStyles}>
+          <input
+            type="text"
+            placeholder="Ethnic"
+            value={formData.Ethnic}
+            onChange={(e) => setFormData({ ...formData, Ethnic: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="number"
+            placeholder="Academic Performance"
+            value={formData.academic_perfromance}
+            onChange={(e) => setFormData({ ...formData, academic_perfromance: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <div style={rowStyles}>
+          <input
+            type="text"
+            placeholder="Academic Description"
+            value={formData.adamemic_description}
+            onChange={(e) => setFormData({ ...formData, adamemic_description: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="text"
+            placeholder="IQ"
+            value={formData.IQ}
+            onChange={(e) => setFormData({ ...formData, IQ: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <div style={rowStyles}>
+          <input
+            type="text"
+            placeholder="Type of School"
+            value={formData.type_school}
+            onChange={(e) => setFormData({ ...formData, type_school: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="text"
+            placeholder="Socio-Economic Status"
+            value={formData.socio_economic_status}
+            onChange={(e) => setFormData({ ...formData, socio_economic_status: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <div style={rowStyles}>
+          <input
+            type="text"
+            placeholder="Study Habit"
+            value={formData.Study_Habit}
+            onChange={(e) => setFormData({ ...formData, Study_Habit: e.target.value })}
+            required
+            style={inputStyles}
+          />
+          <input
+            type="number"
+            placeholder="NAT Results"
+            value={formData.NAT_Results}
+            onChange={(e) => setFormData({ ...formData, NAT_Results: e.target.value })}
+            required
+            style={inputStyles}
+          />
+        </div>
+        <button type="submit" style={buttonStyles}>Add Data</button>
+        <h3 style={{ textAlign: 'center' }}>OR</h3>
         <input
-   
-
-          type="text"
-
-          placeholder="Respondents Name"
-          value={formData.Respondents}
-          onChange={(e) => setFormData({ ...formData, Respondents: e.target.value })}
-          required
-          style={inputStyles}
+          type="file"
+          accept=".csv"
+          onChange={handleFileChange}
+          style={fileInputStyles}
         />
-        <input
-          type="number"
-          placeholder="Age"
-          value={formData.age}
-          onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-          required
-          style={{ ...inputStyles, width: '100px',marginLeft:'40px' }} 
-        />
-        <input
-          type="text"
-          placeholder="Sex"
-          value={formData.sex}
-          onChange={(e) => setFormData({ ...formData, sex: e.target.value })}
-          required
-          style={{ ...inputStyles, width: '150px' }} 
-        />
-        <input
-          type="text"
-          placeholder="Ethnic"
-          value={formData.Ethnic}
-          onChange={(e) => setFormData({ ...formData, Ethnic: e.target.value })}
-          required
-          style={{inputStyles,width:'290px',marginLeft:'-150px'}}
-        />
-        <input
-          type="number"
-          placeholder="Academic Performance"
-          value={formData.academic_perfromance}
-          onChange={(e) => setFormData({ ...formData, academic_perfromance: e.target.value })}
-          required
-          style={{ ...inputStyles, width: '200px' }} 
-        />
-        
-        <input
-          type="text"
-          placeholder="Academic Description"
-          value={formData.adamemic_description}
-          onChange={(e) => setFormData({ ...formData, adamemic_description: e.target.value })}
-          required
-          style={{inputStyles,width:'240px',marginLeft:'-100px'}}
-        />
-        <input
-          type="text"
-          placeholder="IQ"
-          value={formData.IQ}
-          onChange={(e) => setFormData({ ...formData, IQ: e.target.value })}
-          required
-          style={{ ...inputStyles, width: '100px' }} 
-        />
-        <input
-          type="text"
-          placeholder="Type of School"
-          value={formData.type_school}
-          onChange={(e) => setFormData({ ...formData, type_school: e.target.value })}
-          required
-          style={{inputStyles,width:'340px',marginLeft:'-200px'}}
-        />
-        <input
-          type="text"
-          placeholder="Socio-Economic Status"
-          value={formData.socio_economic_status}
-          onChange={(e) => setFormData({ ...formData, socio_economic_status: e.target.value })}
-          required
-          style={{inputStyles,width:'240px'}}
-        />
-        <input
-          type="text"
-          placeholder="Study Habit"
-          value={formData.Study_Habit}
-          onChange={(e) => setFormData({ ...formData, Study_Habit: e.target.value })}
-          required
-          style={{inputStyles,width:'200px',marginLeft:'-60px'}}
-        />
-        <input
-          type="number"
-          placeholder="NAT Results"
-          value={formData.NAT_Results}
-          onChange={(e) => setFormData({ ...formData, NAT_Results: e.target.value })}
-          required
-          style={{ ...inputStyles, width: '150px' }} 
-        />
-        <button type="submit" style={{submitButtonStyles,marginLeft:'-140px',width:'300px'}}>
-          Add Data
-        </button>
-        <h3 style={{ gridColumn: 'span 2', textAlign: 'center' ,marginLeft:'-100px'}}>OR</h3>
-        <input type="file" accept=".csv" onChange={handleFileChange} style={{ gridColumn: 'span 2',width:'250px',marginLeft:'140px'}} />
-        <button onClick={handleFileUpload} disabled={loading} style={uploadButtonStyles}>
+        <button
+          onClick={handleFileUpload}
+          disabled={loading}
+          style={buttonStyles}
+        >
           {loading ? 'Uploading...' : 'Upload CSV'}
         </button>
       </form>

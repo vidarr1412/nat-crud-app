@@ -101,9 +101,13 @@ const ViewRecords = () => {
         <table style={tableStyles}>
           <thead>
             <tr>
-              <th onClick={() => handleSort('Respondents')}>
-                Respondents {sortField === 'Respondents' && (sortDirection === 'asc' ? <FaSortUp /> : <FaSortDown />)}
+            <th onClick={() => handleSort('First Name Name')}>
+                First Name {sortField === 'First Name Name' && (sortDirection === 'asc' ? <FaSortUp /> : <FaSortDown />)}
               </th>
+              <th onClick={() => handleSort('Respondents')}>
+                Sur Name {sortField === 'Respondents' && (sortDirection === 'asc' ? <FaSortUp /> : <FaSortDown />)}
+              </th>
+             
               <th onClick={() => handleSort('age')}>
                 Age {sortField === 'age' && (sortDirection === 'asc' ? <FaSortUp /> : <FaSortDown />)}
               </th>
@@ -140,6 +144,7 @@ const ViewRecords = () => {
           <tbody>
             {filteredRecords.map((record) => (
               <tr key={record.id}>
+                <td>{record.FirstName}</td>
                 <td>{record.Respondents}</td>
                 <td>{record.age}</td>
                 <td>{record.sex}</td>

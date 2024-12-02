@@ -61,8 +61,8 @@ const AddResData = () => {
     age: "",
     sex: "",
     Ethnic: "",
-    academic_performance: "",
-    academic_description: "",
+    academic_perfromance: "",
+    adamemic_description: "",
     IQ: "",
     type_school: "",
     socio_economic_status: "",
@@ -85,7 +85,7 @@ const AddResData = () => {
       await addDoc(collection(db, "NAT"), {
         ...formData,
         age: Number(formData.age),
-        academic_performance: Number(formData.academic_performance),
+        academic_perfromance: Number(formData.academic_perfromance),
         NAT_Results: Number(formData.NAT_Results),
       });
       alert("Data added successfully!");
@@ -94,8 +94,8 @@ const AddResData = () => {
         age: "",
         sex: "",
         Ethnic: "",
-        academic_performance: "",
-        academic_description: "",
+        academic_perfromance: "",
+        adamemic_description: "",
         IQ: "",
         type_school: "",
         socio_economic_status: "",
@@ -124,14 +124,14 @@ const AddResData = () => {
 
       rows.forEach((row) => {
         const columns = row.split(',');
-        if (columns.length >= 5) {
+        if (columns.length >= 10) {
           batchData.push({
             Respondents: columns[0].trim(),
             age: Number(columns[1].trim()),
             sex: columns[2].trim(),
             Ethnic: columns[3].trim(),
-            academic_performance: Number(columns[4].trim()),
-            academic_description: columns[5].trim(),
+            academic_perfromance: Number(columns[4].trim()),
+            adamemic_description: columns[5].trim(),
             IQ: columns[6].trim(),
             type_school: columns[7].trim(),
             socio_economic_status: columns[8].trim(),
